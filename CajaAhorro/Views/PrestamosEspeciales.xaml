@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.PrestamosEspeciales"
+             BackgroundColor="#FAFAFA">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnCerrar" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="320"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Image Margin="10" HeightRequest="30" Source="LogoMoneybox" HorizontalOptions="Start"/>
+            <Label x:Name="NombreSociolbl" VerticalOptions="Center" Margin="10, 10" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <ContentView HeightRequest="55">
+                    <Label  Text="{Binding prestamo.Concepto}" x:Name="Prestamolbl" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                </ContentView>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label FontAttributes="Bold" FontSize="16" TextColor="Black" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Ahorro Acumulado"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" VerticalOptions="End" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center" TextColor="Gray" x:Name="AhorroAcumuladotxt" Text="{Binding AhorroAcumulado }" ></Label>
+                    <Label FontAttributes="Bold" FontSize="16" TextColor="Black" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" Text="Deuda Actual"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" VerticalOptions="End" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" TextColor="Gray" x:Name="DeudaActualtxt" Text="{Binding DeudaActual}" ></Label>
+                    <Label FontAttributes="Bold" FontSize="16" TextColor="Black" HorizontalTextAlignment="Center" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="End" Text="Máximo Préstamo Antigüedad"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" VerticalOptions="End" Grid.Row="3" Grid.Column="0"  HorizontalTextAlignment="Center" TextColor="Gray" x:Name="MaximoPrestamoAntigüedadtxt" Text="{Binding ImporteMaximoPrestamoAntiguedad}"></Label>
+                    <Label FontAttributes="Bold" FontSize="16" TextColor="Black" HorizontalTextAlignment="Center"  Grid.Row="2" Grid.Column="1" VerticalTextAlignment="End" Text="Tasa Interés Mensual"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" VerticalOptions="End"  Grid.Row="3" Grid.Column="1"  HorizontalTextAlignment="Center" TextColor="Gray" x:Name="TasaInteresMensualtxt" Text="{Binding TasaInteresMensual}"></Label>
+                    <Label FontAttributes="Bold" FontSize="16" TextColor="Black" HorizontalTextAlignment="Center"  Grid.Row="4" Grid.Column="0" VerticalTextAlignment="End" Text="Monto Máximo Disponible Préstamo"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" VerticalOptions="End"  Grid.Row="5" Grid.Column="0"  HorizontalTextAlignment="Center" TextColor="Gray" x:Name="MontoMaximoDisponiblePrestamotxt"  Text="{Binding ImporteMaximoDisponiblePrestamo}" ></Label>
+                    <Label FontAttributes="Bold" FontSize="16" TextColor="Black" HorizontalTextAlignment="Center"  Grid.Row="4" Grid.Column="1" VerticalTextAlignment="End" Text="Préstamo Actual sin Reciprocidad"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" VerticalOptions="End"  Grid.Row="5" Grid.Column="1"   HorizontalTextAlignment="Center" TextColor="Gray" x:Name="PrestamoSinReciprocidadtxt" Text="{Binding ImportePrestamoActualSinReciprocidad}" ></Label>
+                    <Label FontAttributes="Bold" FontSize="16" TextColor="Black" HorizontalTextAlignment="Center"  Grid.Row="6" Grid.Column="0" VerticalTextAlignment="End" Text="Monto Préstamo a Solicitar"></Label>
+                    <Entry  FontSize="17" Grid.Row="6" FontAttributes="Bold" Grid.Column="1" HorizontalTextAlignment="Center" TextColor="Black"  Placeholder="$ 0.00" Keyboard="Numeric" MaxLength="10" x:Name="MontoPrestamoAsolicitartxt" Text="{Binding MontoSolicitado}" TextChanged="MontoPrestamoAsolicitartxt_TextChanged"></Entry>
+                    <Label FontAttributes="Bold" FontSize="16" TextColor="Black" HorizontalTextAlignment="Center"  Grid.Row="8" Grid.Column="0" Text="Reciprocidad"></Label>
+                    <Entry FontSize="17" FontAttributes="Bold"  Grid.Row="9" Grid.Column="0" Placeholder="$0.00" HorizontalTextAlignment="Center" TextColor="Gray" x:Name="MontoPagarParaReciprocidadtxt" Text="{Binding ImportePagarReciprocidad}" ></Entry>
+                    <Label FontAttributes="Bold" FontSize="16" TextColor="Black" HorizontalTextAlignment="Center"  Grid.Row="8" Grid.Column="1"  Text="Descuento:"></Label>
+                    <Entry FontSize="17" FontAttributes="Bold" Grid.Row="9" Grid.Column="1" Placeholder="$0.00"  HorizontalTextAlignment="Center" x:Name="MontoDelDescuentoSemanaltxt" Text="{Binding ImporteDescuento}" ></Entry>
+                </Grid>
+
+                <Label FontAttributes="Bold" FontSize="16" TextColor="Black" HorizontalOptions="Fill"
+                       Text="Número de Empleado del Aval:"/>
+
+                <Entry FontAttributes="Bold" FontSize="17" Keyboard="Numeric" WidthRequest="320"
+                       HorizontalOptions="Fill" HorizontalTextAlignment="Center"
+                       TextColor="Gray" Placeholder="Aval" x:Name="txtNoEmpleadoAval" Text="{Binding NumeroEmpleadoAval}"/>
+
+                <Label FontAttributes="Bold" FontSize="16" TextColor="Black" HorizontalOptions="Fill" Text="Empresa" />
+
+                <Picker x:Name="PckrEmpresas" Title="Seleccione Empresa"
+                        ItemsSource="{Binding ListaEmpresas}" WidthRequest="320"
+                        ItemDisplayBinding="{Binding NombreCorto}" HorizontalOptions="Fill" 
+                        SelectedItem="{Binding EmpresaSeleccionada}"
+                        HorizontalTextAlignment="Center" />
+
+                <Label FontSize="13" FontAttributes="Bold" TextColor="#0008ff" Text="Toda solicitud de préstamo quedará sujeta a su autorización en la próxima reunión del Comité."></Label>
+
+                <Grid Margin="0, 20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="TablaAmortizacionBtn" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Text="Tabla de Amortizacion" ImageSource="btnTablaAmortizacion"
+                            Clicked="TablaAmortizacionBtn_Clicked" Style="{DynamicResource btnCerrar}" />
+
+                    <Button x:Name="RegresarBtn" Grid.Row="1" Grid.Column="0" Text="Regresar" ImageSource="btnRegresar"
+                            Clicked="RegresarBtn_Clicked" Style="{DynamicResource btnCerrar}" />
+
+                    <Button x:Name="ValidaAvalBtn" Grid.Row="1" Grid.Column="1" Text="Valida Aval" ImageSource="btnAceptar"
+                            Clicked="ValidaAvalBtn_Clicked" Style="{DynamicResource btnCerrar}" />
+
+                </Grid>
+
+                <Button x:Name="AceptarBtn" Margin="50" Text="Aceptar" ImageSource="btnAceptar" IsEnabled="{Binding AceptarHabilitado}" 
+                            Clicked="AceptarBtn_Clicked" Style="{DynamicResource btnCerrar}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>    

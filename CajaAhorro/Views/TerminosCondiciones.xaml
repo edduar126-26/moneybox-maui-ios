@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.TerminosCondiciones"
+             BackgroundColor="#FAFAFA">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnDark" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="WidthRequest" Value="200"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <ScrollView>
+                    <StackLayout>
+                        <WebView Source="https://casutcecytebcs.tasisaas.com/seguridad/TerminosCondiciones" HeightRequest="9330" WidthRequest="1000"/>
+                    </StackLayout>
+                </ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="RegresarBtn" Grid.Row="0" Grid.Column="0" Text="Regresar" ImageSource="btnRegresar"
+                            Clicked="CancelarBtn_Clicked" Style="{DynamicResource btnDark}" />
+
+                    <Button x:Name="AceptarBtn" Grid.Row="0" Grid.Column="1" Text="Aceptar" ImageSource="btnAceptar"
+                            Clicked="AceptarBtn_Clicked" Style="{DynamicResource btnDark}" />
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

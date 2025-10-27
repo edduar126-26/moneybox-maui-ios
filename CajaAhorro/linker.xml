@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<linker>
+	<assembly fullname="SQLitePCLRaw.core">
+		<type fullname="SQLitePCL.raw" preserve="all" />
+	</assembly>
+	<assembly fullname="SQLitePCLRaw.provider.sqlite3">
+		<type fullname="SQLitePCL.SQLite3Provider_sqlite3" preserve="all" />
+	</assembly>
+</linker>

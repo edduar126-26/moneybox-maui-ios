@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.CambiodeContraseña"
+             BackgroundColor="#FAFAFA">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnDark" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+
+        <ContentView  Padding="{OnPlatform Android='30,30,0,0', iOS='30,30,0,0'}">
+
+            <Grid MinimumHeightRequest="44"
+           ColumnDefinitions="Auto, *"
+           ColumnSpacing="8"
+           VerticalOptions="Center"
+           HorizontalOptions="Start">
+
+
+                <Image Grid.Column="0"
+                HeightRequest="30"
+                
+                Aspect="AspectFit"
+                Source="LogoMoneybox"
+                Margin="0,0,4,0"
+                VerticalOptions="Center" />
+
+
+                <Label Grid.Column="1"
+                x:Name="NombreSociolbl"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Margin="0"
+                FontSize="16"
+                FontAttributes="Bold"
+                LineBreakMode="TailTruncation"
+                MaxLines="1"
+                TextColor="White"/>
+            </Grid>
+        </ContentView>
+    </NavigationPage.TitleView>
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <ScrollView>
+                    <StackLayout>
+                        <ContentView HeightRequest="55">
+                            <Label  Text="Cambiar Contraseña" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                        </ContentView>
+                    </StackLayout>
+                </ScrollView>
+
+                <!-- Contraseña Anterior -->
+                <Label Margin="20,5,20,5" FontAttributes="Bold" FontSize="16" TextColor="Black"
+       HorizontalTextAlignment="Start" Text="Contraseña Anterior" />
+                <Grid Margin="20,5,20,5" ColumnSpacing="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <Entry x:Name="Contraseniatxt"
+           Grid.Column="0"
+           FontSize="17"
+           IsPassword="True"
+           Placeholder="Ingresa tu contraseña anterior"
+           Keyboard="Plain" />
+
+                    <ImageButton x:Name="OldPwdEyeBtn"
+                 Grid.Column="1"
+                 Source="eye_closed.png"
+                 BackgroundColor="Transparent"
+                 WidthRequest="32" HeightRequest="32"
+                 HorizontalOptions="Center" VerticalOptions="Center"
+                 Clicked="OnToggleOldPwdClicked" />
+                </Grid>
+
+                <!-- Nueva Contraseña -->
+                <Label Margin="20,5,20,5" FontAttributes="Bold" FontSize="16" TextColor="Black"
+       HorizontalTextAlignment="Start" Text="Nueva Contraseña" />
+                <Grid Margin="20,5,20,5" ColumnSpacing="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <Entry x:Name="NuevaContraseniatxt"
+           Grid.Column="0"
+           FontSize="17"
+           IsPassword="True"
+           Placeholder="Ingresa tu nueva contraseña"
+           Keyboard="Plain" />
+
+                    <ImageButton x:Name="NuevaPwdEyeBtn"
+                 Grid.Column="1"
+                 Source="eye_closed.png"
+                 BackgroundColor="Transparent"
+                 WidthRequest="32" HeightRequest="32"
+                 HorizontalOptions="Center" VerticalOptions="Center"
+                 Clicked="OnToggleNuevaPwdClicked" />
+                </Grid>
+
+             
+                <Label Margin="20,5,20,5" FontAttributes="Bold" FontSize="16" TextColor="Black"
+       HorizontalTextAlignment="Start" Text="Confirme su Nueva Contraseña" />
+                <Grid Margin="20,5,20,5" ColumnSpacing="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <Entry x:Name="ConfirmaNuevaContraseniatxt"
+           Grid.Column="0"
+           FontSize="17"
+           IsPassword="True"
+           Placeholder="Repite la nueva contraseña"
+           Keyboard="Plain" />
+
+                    <ImageButton x:Name="ConfirmNuevaPwdEyeBtn"
+                 Grid.Column="1"
+                 Source="eye_closed.png"
+                 BackgroundColor="Transparent"
+                 WidthRequest="32" HeightRequest="32"
+                 HorizontalOptions="Center" VerticalOptions="Center"
+                 Clicked="OnToggleConfirmNuevaPwdClicked" />
+                </Grid>
+
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="RegresarBtn" Grid.Row="0" Grid.Column="0" Text="Regresar" ImageSource="btnRegresar"
+                            Clicked="RegresarBtn_Clicked" Style="{DynamicResource btnDark}" />
+
+                    <Button x:Name="AceptarBtn" Grid.Row="0" Grid.Column="1" Text="Aceptar" ImageSource="btnAceptar"
+                            Clicked="GuardarClave_Clicked" Style="{DynamicResource btnDark}" /></Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.DocumentosSocioActualizacion"
+             Title="Actualizar Documentos del Socio">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnDark" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <NavigationPage.TitleView>
+
+        <ContentView  Padding="{OnPlatform Android='0,30,0,0', iOS='0,30,0,0'}">
+
+            <Grid MinimumHeightRequest="44"
+           ColumnDefinitions="Auto, *"
+           ColumnSpacing="8"
+           VerticalOptions="Center"
+           HorizontalOptions="Start">
+
+
+                <Image Grid.Column="0"
+                HeightRequest="30"
+                
+                Aspect="AspectFit"
+                Source="LogoMoneybox"
+                Margin="0,0,4,0"
+                VerticalOptions="Center" />
+
+
+                <Label Grid.Column="1"
+                x:Name="NombreSociolbl"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Margin="0"
+                FontSize="16"
+                FontAttributes="Bold"
+                LineBreakMode="TailTruncation"
+                MaxLines="1"
+                TextColor="White"/>
+            </Grid>
+        </ContentView>
+    </NavigationPage.TitleView>
+    
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="25">
+
+            <Label Text="Actualización de documentos" FontSize="Large" HorizontalOptions="Center" />
+
+            <Label Text="Documento INE" FontAttributes="Bold" />
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Seleccionar" Grid.Column="0" Clicked="BtnSeleccionarINE_Clicked" />
+                <Button Grid.Column="1"
+                        ImageSource="camera.png"
+                        BackgroundColor="LightGray"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Clicked="BtnTomarFotoINE_Clicked" />
+            </Grid>
+            <Label x:Name="LblINE" Text="No seleccionado" FontAttributes="Italic" FontSize="Small"/>
+            <Button Text="Subir INE" Clicked="BtnSubirINE_Clicked"
+                    BackgroundColor="SteelBlue" TextColor="White" />
+
+
+            <Label Text="Comprobante de Domicilio" FontAttributes="Bold" />
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Seleccionar" Grid.Column="0" Clicked="BtnSeleccionarDOM_Clicked" />
+                <Button Grid.Column="1"
+                        ImageSource="camera.png"
+                        BackgroundColor="LightGray"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Clicked="BtnTomarFotoDOM_Clicked" />
+            </Grid>
+            <Label x:Name="LblDOM" Text="No seleccionado" FontAttributes="Italic" FontSize="Small"/>
+            <Button Text="Subir Domicilio" Clicked="BtnSubirDOM_Clicked"
+                    BackgroundColor="SteelBlue" TextColor="White" />
+
+
+            <Label Text="Comprobante de Nómina" FontAttributes="Bold" />
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Seleccionar" Grid.Column="0" Clicked="BtnSeleccionarNOM_Clicked" />
+                <Button Grid.Column="1"
+                        ImageSource="camera.png"
+                        BackgroundColor="LightGray"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Clicked="BtnTomarFotoNOM_Clicked" />
+            </Grid>
+            <Label x:Name="LblNOM" Text="No seleccionado" FontAttributes="Italic" FontSize="Small"/>
+            <Button Text="Subir Nómina" Clicked="BtnSubirNOM_Clicked"
+                    BackgroundColor="SteelBlue" TextColor="White" />
+
+            <Button x:Name="RegresarBtn"
+            Text="Regresar"
+            ImageSource="btnRegresar"
+            Clicked="RegresarBtn_Clicked"
+            BackgroundColor="Black"
+            TextColor="White"
+            HorizontalOptions="Fill"
+            Margin="0,20,0,0" />
+
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>

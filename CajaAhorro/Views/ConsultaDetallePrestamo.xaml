@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.ConsultaDetallePrestamo"
+             BackgroundColor="#FAFAFA">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnDark" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+            <Style x:Key="btnCerrar" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="320"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="20"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+
+        <ContentView  Padding="{OnPlatform Android='30,30,0,0', iOS='30,30,0,0'}">
+
+            <Grid MinimumHeightRequest="44"
+           ColumnDefinitions="Auto, *"
+           ColumnSpacing="8"
+           VerticalOptions="Center"
+           HorizontalOptions="Start">
+
+
+                <Image Grid.Column="0"
+                HeightRequest="30"
+                
+                Aspect="AspectFit"
+                Source="LogoMoneybox"
+                Margin="0,0,4,0"
+                VerticalOptions="Center" />
+
+
+                <Label Grid.Column="1"
+                x:Name="NombreSociolbl"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Margin="0"
+                FontSize="16"
+                FontAttributes="Bold"
+                LineBreakMode="TailTruncation"
+                MaxLines="1"
+                TextColor="White"/>
+            </Grid>
+        </ContentView>
+    </NavigationPage.TitleView>
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <ScrollView>
+                    <StackLayout>
+                        <ContentView HeightRequest="55">
+                            <Label  x:Name="Prestamolbl" Text="Detalle {Binding TipoPrestamo}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                        </ContentView>
+                    </StackLayout>
+                </ScrollView>
+                
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" TextColor="Black" Text="Folio Solicitud"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center" TextColor="Gray" x:Name="FolioSolicitud" Text="{Binding FolioSolicitud}" ></Label>
+                    <Label FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" TextColor="Black" Text="Fecha Préstamo"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" TextColor="Gray" x:Name="FechaPrestamo" Text="{Binding FechaPrestamo}" ></Label>
+                    <Label FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"  Grid.Row="2" Grid.Column="0" TextColor="Black" VerticalTextAlignment="End" Text="Importe Descuento"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" Grid.Row="3" Grid.Column="0" HorizontalTextAlignment="Center" TextColor="Gray" x:Name="ImporteDescuento" Text="{Binding ImporteDescuento}" ></Label>
+                    <Label FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"  Grid.Row="2" Grid.Column="1" TextColor="Black" VerticalTextAlignment="End" Text="Tasa Préstamo"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="Center" TextColor="Gray" x:Name="TasaPrestamo" Text="{Binding TasaPrestamo}" ></Label>
+                    <Label FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center" Grid.Row="4" Grid.Column="0" TextColor="Black" VerticalTextAlignment="End" Text="Importe Préstamo"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" Grid.Row="5" Grid.Column="0" HorizontalTextAlignment="Center" TextColor="Gray" x:Name="ImportePrestamo" Text="{Binding ImportePrestamo}" ></Label>
+                    <Label FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"  Grid.Row="4" Grid.Column="1" TextColor="Black"  VerticalTextAlignment="End" Text="Saldo Préstamo"></Label>
+                    <Label FontAttributes="Bold" FontSize="17" Grid.Row="5" Grid.Column="1" HorizontalTextAlignment="Center" TextColor="Gray" x:Name="SaldoPrestamo" Text="{Binding SaldoPrestamo}" ></Label>
+                </Grid>
+
+
+                <!--<ContentView HeightRequest="55">
+                    <Label Text="Promesas" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                </ContentView>
+
+
+
+                <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label TextColor="Black" FontAttributes="Bold" FontSize="16" Text="Descripcion"  Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Start"></Label>
+                    <Label TextColor="Black" FontAttributes="Bold" FontSize="16" Text="Monto"  Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center"></Label>
+                    <Label TextColor="Black" FontAttributes="Bold" FontSize="16" Text="Saldo"  Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center"></Label>
+                </Grid>
+                
+                <ListView Margin="20" ItemsSource="{Binding Promesas}"
+                      x:Name="LstPromesas"
+                      HasUnevenRows="True"
+                      HeightRequest="200"
+                      SeparatorVisibility="Default"
+                      HorizontalOptions="Fill"
+                      VerticalOptions="Fill"
+                      SeparatorColor="Black">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label TextColor="Black" FontAttributes="Bold"  FontSize="16" Text="{Binding Descripcion}"  Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Start"></Label>
+                                    <Label TextColor="Black" FontAttributes="Bold"  FontSize="16" Text="{Binding Importe}"  Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center"></Label>
+                                    <Label TextColor="Black" FontAttributes="Bold"  FontSize="16" Text="{Binding SaldoPromesa}"  Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center"></Label>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>-->
+
+                <Button x:Name="RegresarBtn" Grid.Row="0" Grid.Column="0" Text="Regresar" ImageSource="btnRegresar"
+                            Clicked="RegresarBtn_Clicked" Style="{DynamicResource btnCerrar}" />
+                
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+                    

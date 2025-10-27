@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.MenuSocio"
+             BackgroundColor="#FAFAFA">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnDark" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="80"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+            <Style x:Key="btnCerrar" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="320"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="20"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <NavigationPage.TitleView>
+
+        <ContentView Padding="{OnPlatform Android='0,30,15,5', iOS='0,30,15,5'}">
+
+            <Grid x:Name="TitleRoot"
+  
+  ColumnSpacing="10" VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="LogoMoneybox" HeightRequest="30" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start"/>
+
+                <Label x:Name="NombreSociolbl" Grid.Column="1" VerticalOptions="Center"
+       FontSize="16" FontAttributes="Bold" TextColor="White"
+       HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+
+
+                <Grid Grid.Column="2" HeightRequest="30" WidthRequest="30"
+      HorizontalOptions="End" VerticalOptions="Center">
+                    <ImageButton x:Name="CampanitaBtn" Clicked="NotificacionesBtn_Clicked"
+                 BackgroundColor="White" Source="notifybell.png"
+                 HeightRequest="30" WidthRequest="30"/>
+
+
+                    <BoxView x:Name="PuntoRojo" Color="Red" HeightRequest="10" WidthRequest="10"
+             CornerRadius="5" HorizontalOptions="End" VerticalOptions="Start"
+             IsVisible="False" Margin="0,0,0,0"/>
+                </Grid>
+            </Grid>
+        </ContentView>
+        
+    </NavigationPage.TitleView>
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20">
+
+                <Grid ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Fila 0 -->
+                    <Button Grid.Row="0" Grid.Column="0"
+            x:Name="VentaAccionesBtn"
+            ImageSource="ventaacciones"
+            ContentLayout="Left,10"
+            Text="Retiro de Capital"
+            Style="{DynamicResource btnDark}"
+            Clicked="VentaAccionesBtn_Clicked" LineBreakMode="WordWrap" />
+
+                    <Button Grid.Row="0" Grid.Column="1"
+            x:Name="SolicitudPrestamoBtn"
+            ImageSource="prestamos"
+            ContentLayout="Left,10"
+            Text="Préstamos"
+            Style="{DynamicResource btnDark}"
+            Clicked="SolicitudPrestamoBtn_Clicked" LineBreakMode="WordWrap"/>
+
+                    <!-- Fila 1 -->
+                    <Button Grid.Row="1" Grid.Column="0"
+            x:Name="ModificacionAhorroBtn"
+            ImageSource="modificacionahorro"
+            ContentLayout="Left,10"
+            Text="Descuento Largo Plazo"
+            Style="{DynamicResource btnDark}"
+            Clicked="ModificacionAhorroBtn_Clicked" LineBreakMode="WordWrap"/>
+
+                    <Button Grid.Row="1" Grid.Column="1"
+            x:Name="ModificacionAhorroCPBtn"
+            ImageSource="modificacionahorro"
+            ContentLayout="Left,10"
+            Text="Descuento Corto Plazo"
+            Style="{DynamicResource btnDark}"
+            Clicked="ModificacionAhorroCPBtn_Clicked" LineBreakMode="WordWrap" />
+
+                    <!-- Fila 2 -->
+                    <Button Grid.Row="2" Grid.Column="0"
+            x:Name="BajaCajaAhorroBtn"
+            ImageSource="baja"
+            ContentLayout="Left,10"
+            Text="Baja"
+            Style="{DynamicResource btnDark}"
+            Clicked="BajaCajaAhorroBtn_Clicked" LineBreakMode="WordWrap"/>
+
+                    <Button Grid.Row="2" Grid.Column="1"
+            x:Name="ConsultaEstadoCuentaBtn"
+            ImageSource="estadocuenta"
+            ContentLayout="Left,10"
+            Text="Estado de Cuenta"
+            Style="{DynamicResource btnDark}"
+            Clicked="ConsultaEstadoCuenta_Clicked" LineBreakMode="WordWrap" />
+
+                    <!-- Fila 3 -->
+                    <Button Grid.Row="3" Grid.Column="0"
+            x:Name="ActualizarDocumentosBtn"
+            ImageSource="file"
+            ContentLayout="Left,10"
+            Text="Actualizar Documentos"
+            Style="{DynamicResource btnDark}"
+            Clicked="Actualizar_Documentos" LineBreakMode="WordWrap"/>
+
+                    <Button Grid.Row="3" Grid.Column="1"
+            x:Name="CambiarContraseniaBtn"
+            ImageSource="cambiarcontrasenia"
+            ContentLayout="Left,10"
+            Text="Cambiar Password"
+            Style="{DynamicResource btnDark}"
+            Clicked="CambiarContraseniaBtn_Clicked" LineBreakMode="WordWrap"/>
+
+                    <!-- Fila 4 -->
+                    <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+            x:Name="AvisodePrivacidadBtn"
+            ImageSource="avisodePrivacidad"
+            ContentLayout="Left,10"
+            Text="Aviso de Privacidad"
+            Style="{DynamicResource btnDark}"
+            Clicked="AvisodePrivacidadBtn_Clicked"
+            HorizontalOptions="Center" LineBreakMode="WordWrap" />
+                </Grid>
+
+                <!-- Botón Cerrar Sesión -->
+                <Button Text="Cerrar Sesión" x:Name="SalirBtn" Clicked="SalirBtn_Clicked"
+                ImageSource="salir" Style="{DynamicResource btnCerrar}" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

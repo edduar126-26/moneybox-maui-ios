@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             x:Class="Money_Box.Views.FirmarPagare"
+             Title="Ver Documentos"
+             ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnDark" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="10">
+            <Label Text="Visualiza los documentos antes de firmar"
+             FontAttributes="Bold"
+             FontSize="Medium"
+             HorizontalOptions="Center" />
+
+          
+            <WebView x:Name="pdfViewer"
+               HeightRequest="400" />
+        
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Button Text="Ver Pagaré" Clicked="OnVerPagareClicked" />
+                <Button Text="Ver Contrato" Clicked="OnVerContratoClicked" />
+            </HorizontalStackLayout>
+
+            <Button Text="Firmar documentos"
+              BackgroundColor="DarkGreen"
+              TextColor="White"
+              Margin="0,20,0,0"
+              Clicked="OnFirmarClicked" />
+
+            <Button x:Name="RegresarBtn"
+              Text="Regresar"
+              ImageSource="btnRegresar"
+              Clicked="RegresarBtn_Clicked"
+              Style="{DynamicResource btnDark}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

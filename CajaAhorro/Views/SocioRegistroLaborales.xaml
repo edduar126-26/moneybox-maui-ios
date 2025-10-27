@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:control="clr-namespace:Money_Box"
+             x:Class="Money_Box.Views.SocioRegistroLaborales"
+             BackgroundColor="#FAFAFA">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnDark" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Image Margin="10" HeightRequest="30" Source="LogoMoneybox" HorizontalOptions="Start"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <ContentView HeightRequest="55">
+                    <Label  Text="Datos Laborales" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                </ContentView>
+      
+                <Label FontSize="16" Text="Número de Empleado (opcional)" />
+                            <Entry FontSize="17"
+                               x:Name="NumeroEmpleadoEntry"
+                               Placeholder="Ej. 908000"
+                               Keyboard="Numeric"
+                               MaxLength="10"
+                               HorizontalTextAlignment="Center" />  
+                <Label FontSize="16" Text="Fecha de Ingreso a la Empresa"></Label>
+                <DatePicker  Format="dd-MM-yyyy" x:Name="FechaIngesoEmpresatxt"></DatePicker>
+                <Label FontSize="16"  Text="Sueldo Bruto Mensual"></Label>
+                <Entry x:Name="SueldoBrutoMensualtxt"
+                Placeholder="$ 0.00"
+                FontSize="17"
+                Keyboard="Numeric"
+                MaxLength="10"
+                HorizontalTextAlignment="Center"
+                Focused="SueldoBrutoMensualtxt_Focused"
+                Unfocused="SueldoBrutoMensualtxt_Unfocused"/>   
+                <Label FontSize="16" Text="Tipo Nomina"></Label>
+                <ActivityIndicator HeightRequest="50" WidthRequest="50" IsVisible="False"  x:Name="ActivityIndicatorPckrEmpleados"></ActivityIndicator>
+                <Picker 
+                ItemsSource="{Binding CaTiposEmpleados}"
+                ItemDisplayBinding="{Binding TipoEmpleado}"
+                SelectedItem="{Binding TiposEmpleadosSeleccionado}"
+                Title="Seleccionar"
+                TextColor="Black"
+                x:Name="PckrEmpleados" />   
+
+                <Label FontSize="16" Text="Descuento Ahorro Largo Plazo"></Label>
+                <Entry FontSize="17" Keyboard="Numeric" MaxLength="10" x:Name="ImporteAccionesparaCajatxt" Placeholder="$ 0.00" HorizontalTextAlignment="Center"  Focused="EntryMoneda_Focused" Unfocused="EntryMoneda_Unfocused"></Entry>
+                <Label FontSize="16" Text="Descuento Ahorro Corto Plazo"></Label>
+                <Entry FontSize="17" Keyboard="Numeric" MaxLength="10" x:Name="txtAhorroCP" Placeholder="$ 0.00" HorizontalTextAlignment="Center"  Focused="EntryMoneda_Focused" Unfocused="EntryMoneda_Unfocused"></Entry>
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="RegresarBtn" Grid.Row="0" Grid.Column="0" Text="Regresar" ImageSource="btnRegresar"
+                            Clicked="RegresarBtn_Clicked" Style="{DynamicResource btnDark}" />
+
+                    <Button x:Name="AceptarBtn" Grid.Row="0" Grid.Column="1" Text="Aceptar" ImageSource="btnAceptar"
+                            Clicked="Siguientebtn_Clicked" Style="{DynamicResource btnDark}" />
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

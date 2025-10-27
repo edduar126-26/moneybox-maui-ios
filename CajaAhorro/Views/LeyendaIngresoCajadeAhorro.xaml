@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.LeyendaIngresoCajadeAhorro"
+             BackgroundColor="#FAFAFA">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnDark" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+            <Image Margin="10" HeightRequest="30" Source="LogoMoneybox" HorizontalOptions="Start"/>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <ContentView HeightRequest="55">
+                    <Label  Text="Ingreso a la Caja de Ahorro" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
+                </ContentView>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Label TextColor="Black" FontSize="13" x:Name="Lic" Grid.Row="0" Grid.Column="0" Text="Doy mi autorización para que me sean aplicados los descuentos por nómina correspondientes para ingresar a la Caja Mancomunada de Empleados  Alupeco A. C. " ></Label>
+                <Label FontSize="16" x:Name="Descuentolbl" Margin="10,20,0,0" Grid.Row="1" Grid.Column="0" Text="Descuento" ></Label>
+                <Label TextColor="Black" FontSize="16" Grid.Row="3" Grid.Column="0" Text="Solicita te sea entregado el Contrato Normativo para hacer válido tu Ingreso a la Caja Mancomunada de Empleados  Alupeco A. C. Es necesario que proporciones la información siguiente:" ></Label>
+                <Label TextColor="Black" FontSize="16" Grid.Row="4" Grid.Column="0" Text="- Comprobante de Domicilio" ></Label>
+                <Label TextColor="Black" FontSize="16" Grid.Row="5" Grid.Column="0" Text="- 2 Referencias Personales (que incluyan Nombre, Domicilio y Teléfono)" ></Label>
+                <Label TextColor="Black" FontSize="16" Grid.Row="6" Grid.Column="0" FontAttributes="Bold" Text="*AL PRESIONAR EL BOTÓN ACEPTAR CONFIRMA QUE HE LEÍDO Y ACEPTADO LAS CONDICIONES PARA INGRESAR A LA CAJA MANCOMUNADA DE EMPLEADOS ALUPECO A.C." ></Label>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="RegresarBtn" Grid.Row="0" Grid.Column="0" Text="Regresar" ImageSource="btnRegresar"
+                            Clicked="RegresarBtn_Clicked" Style="{DynamicResource btnDark}" />
+
+                    <Button x:Name="AceptarBtn" Grid.Row="0" Grid.Column="1" Text="Aceptar" ImageSource="btnAceptar"
+                            Clicked="AceptarBtn_Clicked" Style="{DynamicResource btnDark}" />
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.SocioRegistroNombre"
+             BackgroundColor="#FAFAFA">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnDark" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Image Margin="10" HeightRequest="30" Source="LogoMoneybox" HorizontalOptions="Start"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <ContentView HeightRequest="55">
+                    <Label  Text="Datos Personales" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                </ContentView>
+                <Label FontSize="16" Text="Apellido Paterno"></Label>
+                <Entry FontSize="17" x:Name="ApellidoPaternotxt" MaxLength="50"></Entry>
+                <Label FontSize="16" Text="Apellido Materno"></Label>
+                <Entry FontSize="17" x:Name="ApellidoMaternotxt" MaxLength="50"></Entry>
+                <Label FontSize="16" Text="Nombre(s)"></Label>
+                <Entry FontSize="17" x:Name="Nombretxt" MaxLength="80"></Entry>
+                <Label FontSize="16" Text="Correo Electronico"></Label>
+                <Entry FontSize="17" x:Name="CorreoElectronicotxt" ></Entry>
+                <Label FontSize="16" Text="RFC"></Label>
+                <Entry FontSize="17" x:Name="RFCtxt" ></Entry>
+
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="RegresarBtn" Grid.Row="0" Grid.Column="0" Text="Regresar" ImageSource="btnRegresar"
+                            Clicked="CancelarBtn_Clicked" Style="{DynamicResource btnDark}" />
+
+                    <Button x:Name="AceptarBtn" Grid.Row="0" Grid.Column="1" Text="Aceptar" ImageSource="btnAceptar"
+                            Clicked="Siguientebtn_Clicked" Style="{DynamicResource btnDark}" />
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

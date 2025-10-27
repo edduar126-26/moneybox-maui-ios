@@ -1,0 +1,47 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.ContratoNormativo">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnDark" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid Padding="10"
+        RowDefinitions="Auto,* ,Auto,Auto">
+        <Label x:Name="lblMensaje"
+           Grid.Row="0"
+           Text="Cargando contrato..."
+           HorizontalOptions="Center"
+           VerticalOptions="Start" />
+
+        <WebView x:Name="webViewContrato"
+             Grid.Row="1"
+             HorizontalOptions="Fill"
+             VerticalOptions="FillAndExpand"
+             IsVisible="False" />
+
+        <Button Grid.Row="2"
+            Text="Firmar Contrato"
+            BackgroundColor="DarkGreen"
+            TextColor="White"
+            Margin="0,20,0,0"
+            Clicked="OnFirmarClicked" />
+
+        <Button x:Name="RegresarBtn"
+            Grid.Row="3"
+            Text="Regresar"
+            ImageSource="btnRegresar"
+            Clicked="RegresarBtn_Clicked"
+            Style="{DynamicResource btnDark}"
+            BackgroundColor="Black"
+            TextColor="White" />
+    </Grid>
+</ContentPage>

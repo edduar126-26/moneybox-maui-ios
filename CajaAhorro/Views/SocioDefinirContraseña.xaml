@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.SocioDefinirContraseña"
+             Title="Contraseña"
+             BackgroundColor="#FAFAFA">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+
+            <Label Text="Crear Contraseña" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+
+            <Label Text="Contraseña" FontSize="16" />
+            <Grid ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+
+                <Entry x:Name="PasswordEntry"
+             Grid.Column="0"
+             IsPassword="True"
+             Placeholder="Ingresa tu contraseña"
+             Keyboard="Plain" />
+
+                <ImageButton x:Name="PasswordEyeBtn"
+           Grid.Column="1"
+           Source="eye_closed.png"
+           BackgroundColor="Transparent"
+           WidthRequest="32" HeightRequest="32"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           Clicked="OnTogglePasswordClicked" />
+            </Grid>
+
+            <Label Text="Confirmar Contraseña" FontSize="16" />
+            <Grid ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+
+                <Entry x:Name="ConfirmPasswordEntry"
+             Grid.Column="0"
+             IsPassword="True"
+             Placeholder="Repite la contraseña"
+             Keyboard="Plain"
+              />
+
+                <ImageButton x:Name="ConfirmEyeBtn"
+           Grid.Column="1"
+           Source="eye_closed.png"
+           BackgroundColor="Transparent"
+           WidthRequest="32" HeightRequest="32"
+           HorizontalOptions="End" VerticalOptions="Center"
+           Clicked="OnToggleConfirmClicked" />
+            </Grid>
+
+
+            <Button Text="Continuar" Clicked="OnContinueClicked"
+        BackgroundColor="#42424c" TextColor="White"
+        HeightRequest="50" CornerRadius="8" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

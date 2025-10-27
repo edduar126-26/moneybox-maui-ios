@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.AvisoDePrivacidad"
+             BackgroundColor="#FAFAFA">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BtnPrimario" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#009473"/>
+         
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HeightRequest" Value="52"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="16,0,16,16"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+  
+    <Grid RowDefinitions="Auto,*,Auto"
+          RowSpacing="0"
+          BackgroundColor="#FAFAFA">
+
+     
+        <Grid Grid.Row="0"
+              Padding="16,12"
+              BackgroundColor="#42424C">
+            <Label Text="Aviso de Privacidad"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   VerticalOptions="Center"/>
+        </Grid>
+
+       
+        <Grid Grid.Row="1" Padding="12">
+            <ActivityIndicator x:Name="loader"
+                               IsRunning="True"
+                               IsVisible="True"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+            <WebView x:Name="webViewAviso"
+                     Source="https://casutcecytebcs.tasisaas.com/seguridad/AvisoPrivacidad"
+                     Navigated="WebView_Navigated"    
+                HorizontalOptions="Fill"
+                     VerticalOptions="FillAndExpand"/>
+        </Grid>
+
+    
+        <Grid Grid.Row="2" BackgroundColor="#FAFAFA" Padding="0,8,0,8">
+            <Button x:Name="RegresarBtn"
+                    Text="Regresar"
+                    ImageSource="btnRegresar"
+                    Style="{StaticResource BtnPrimario}"
+                    Clicked="RegresarBtn_Clicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>

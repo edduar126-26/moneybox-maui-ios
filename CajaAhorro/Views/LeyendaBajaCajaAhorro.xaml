@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.LeyendaBajaCajaAhorro"
+             BackgroundColor="#FAFAFA">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btnCerrar" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#42424c"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="WidthRequest" Value="320"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="20"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Image Margin="10" HeightRequest="30" Source="LogoMoneybox" HorizontalOptions="Start"/>
+            <Label x:Name="NombreSociolbl" VerticalOptions="Center" Margin="10, 10" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <ContentView HeightRequest="55">
+                <Label  Text="Confirmación de Baja" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
+            </ContentView>
+            
+            <Label FontSize="16" TextColor="Black" Text="Se ha generado su Solicitud y enviado a la Administración de la Caja de Ahorro"></Label>
+            <Label FontSize="16" TextColor="Black" HorizontalOptions="Center" Text="Número de Solicitud"></Label>
+            <Entry FontSize="17" x:Name="NoSolicitudtxt" HorizontalTextAlignment="Center" IsEnabled="False" ></Entry>
+            <Label FontSize="16" TextColor="Black" Text="Para cualquier aclaración favor de acudir con su Administrador de la Caja de Ahorro."></Label>
+            <Label FontSize="16" TextColor="Black" Text="El trámite de baja requiere de 5 días hábiles para ser procesado"></Label>
+
+            <Button x:Name="AceptarBtn" Text="Aceptar" ImageSource="btnAceptar"
+                            Clicked="AceptarBtn_Clicked" Style="{DynamicResource btnCerrar}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

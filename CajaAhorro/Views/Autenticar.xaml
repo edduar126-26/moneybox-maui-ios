@@ -1,0 +1,54 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.Autenticar"
+             BackgroundColor="White"
+             Title="Confirmación de Identidad">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20" Spacing="15">
+
+                <Label Text="Autenticación Requerida" 
+                       FontSize="22" 
+                       FontAttributes="Bold" 
+                       TextColor="#333"
+                       HorizontalOptions="Center" />
+
+                <Label Text="Por seguridad, confirma tu identidad antes de firmar." 
+                       FontSize="14"
+                       TextColor="#666"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center" />
+
+                <Entry Keyboard="Numeric"
+                       Placeholder="Número de empleado"
+                       MaxLength="12"
+                       x:Name="ClaveUsuario"
+                       TextChanged="ClaveUsuario_TextChanged"
+                       HorizontalOptions="Fill" />
+
+                <Entry IsPassword="True"
+                       Placeholder="Contraseña"
+                       MaxLength="18"
+                       x:Name="Contrasenia"
+                       HorizontalOptions="Fill" />
+
+                <Picker x:Name="PckrEmpresas"
+                        Title="Seleccione Empresa"
+                        ItemsSource="{Binding CaEmpresas}"
+                        ItemDisplayBinding="{Binding Empresa}"
+                        IsVisible="false"
+                        HorizontalOptions="Fill" />
+
+                <Button Text="Confirmar Identidad"
+                        x:Name="LoginBtn"
+                        Clicked="LoginBtn_Clicked"
+                        BackgroundColor="#00457C"
+                        TextColor="White"
+                        CornerRadius="5"
+                        HeightRequest="45" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

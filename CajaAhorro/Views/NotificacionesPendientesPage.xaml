@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Money_Box.Views.NotificacionesPendientesPage"
+             Title="Pendientes">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Image Margin="10" HeightRequest="30" Source="LogoMoneybox" HorizontalOptions="Start"/>
+            <Label Text="Notificaciones Pendientes" VerticalOptions="Center" Margin="10, 10" FontSize="16" FontAttributes="Bold" TextColor="White"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    
+    <StackLayout Padding="10">
+        <CollectionView x:Name="Lista" ItemsSource="{Binding NotificacionesPendientes}" BackgroundColor="White">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Borrar"
+                                   BackgroundColor="Red"
+                                   IconImageSource="delete.png"
+                                   Command="{Binding BindingContext.BorrarNotificacionCommand, Source={x:Reference Lista}}"
+                                   CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="10" BackgroundColor="#59B383">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Asunto}" FontAttributes="Bold" FontSize="16" TextColor="#F7F47F" />
+                            <Label Text="{Binding Mensaje}" FontSize="14" TextColor="White" Grid.Row="1" />
+
+                            <Button Text="Marcar como resuelta"
+                            Grid.Row="2"
+                            Command="{Binding BindingContext.MarcarComoResueltaCommand, Source={x:Reference Lista}}"
+                            Margin="0,6,0,0"
+                            CommandParameter="{Binding .}" BorderColor="Black" BackgroundColor="#254848" TextColor="White"/>
+
+                            <Button Text="Ver Documentos Prestamo"
+                            Grid.Row="3"
+                            IsVisible="{Binding TieneFolio}"
+                            Margin="0,6,0,0"
+                            Command="{Binding BindingContext.VerPagareCommand, Source={x:Reference Lista}}"
+                            CommandParameter="{Binding FolioSolicitud}" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button x:Name="RegresarBtn" Grid.Row="0" Grid.Column="0" Text="Regresar" ImageSource="btnRegresar"
+       Clicked="RegresarBtn_Clicked" Style="{DynamicResource btnDark}" BackgroundColor="Black" TextColor="White" />
+    </StackLayout>
+  
+</ContentPage>

@@ -1,0 +1,263 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">
+			$(TargetFrameworks);net9.0-windows10.0.19041.0
+		</TargetFrameworks>
+		
+	
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Money_Box</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		
+        <SkipStaticLibraryValidation>true</SkipStaticLibraryValidation>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">12.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+
+	<PropertyGroup>
+		<!-- Display name -->
+		<ApplicationTitle>CajaAhorro</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.tasisoft.casutcecytebcs</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+
+		<MinimumOSVersion>13.0</MinimumOSVersion>
+	</PropertyGroup>
+
+
+	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
+		<ApplicationId>com.tasisoft.casutcecytebcs</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+		<AndroidCompileSdkVersion>35</AndroidCompileSdkVersion>
+		<AndroidTargetSdkVersion>35</AndroidTargetSdkVersion>
+
+		<AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Release' and '$(TargetFramework)'=='net9.0-ios'">
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+		<ArchiveOnBuild>true</ArchiveOnBuild>
+		<BuildIpa>true</BuildIpa>
+		<CodesignKey>Apple Distribution: Tasi Software (F577B7BGN6)</CodesignKey>
+		<CodesignProvision>App Store: com.tasisoft.casutcecytebcs</CodesignProvision>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Release|net9.0-android'">
+		<AndroidPackageFormat>aab</AndroidPackageFormat>
+		<RuntimeIdentifiers>android-arm;android-arm64</RuntimeIdentifiers>
+
+		<AndroidKeyStore>true</AndroidKeyStore>
+		<AndroidSigningKeyStore>C:\Users\Consultor\keystores\upload-keystore.jks</AndroidSigningKeyStore>
+		<AndroidSigningStorePass>tasisoft01+</AndroidSigningStorePass>
+		<AndroidSigningKeyAlias>MoneyBox</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>tasisoft01+</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	
+	<PropertyGroup Condition="'$(TargetFramework)'=='net9.0-ios'">
+	  <CodesignKey>Apple Distribution: Tasi Software (F577B7BGN6)</CodesignKey>
+	  <CodesignProvision>Casutcecytebcs</CodesignProvision>
+	  <ProvisioningType>manual</ProvisioningType>
+	</PropertyGroup>
+
+	
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
+	  <MtouchUseLlvm>True</MtouchUseLlvm>
+	  <BuildIpa>False</BuildIpa>
+	  <MtouchLink>None</MtouchLink>
+	</PropertyGroup>
+
+	
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
+	  <BuildIpa>False</BuildIpa>
+	</PropertyGroup>
+
+	<ItemGroup>
+	
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" />
+
+		
+		<MauiSplashScrTreen Include="Resources\Splash\iconlaunch.svg" Color="#9696b5" BaseSize="128,128" />
+
+	
+		<MauiImage Include="Resources\Images\*" Exclude="Resources\Images\iconlauncher.jpeg;Resources\Images\logc.jpeg" />
+
+		<MauiImage Update="Resources\Images\logo.jpeg" Resize="True" BaseSize="300,185" />
+		<MauiFont Include="Resources\Fonts\*" />
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+
+
+<ItemGroup>
+  <None Remove="Platforms\Android\xml\file_paths.xml" />
+</ItemGroup>
+
+<ItemGroup>
+  <AndroidResource Include="Platforms\Android\xml\file_paths.xml" />
+</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.110" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="12.2.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="9.0.9" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.9" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="RestSharp" Version="112.1.0" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="3.119.1" />
+
+	
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+		<PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.11" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<AndroidLinkerDescriptor Include="linker.xml" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Acceso.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AhorroCortoPlazo.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Autenticar.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AvisoDePrivacidad.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\BajaCajaAhorro.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Camara.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CambiodeContraseña.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ConsultaDetallePrestamo.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ConsultaEstadoCuenta.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContraseñaOlvidada.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContratoNormativo.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DocumentosSocioActualizacion.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\FirmaDeContratoNormativo.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\FirmarPagare.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\FirmarPagareSocio.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\FolioGeneradoRegistroSocio.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LeyendaAceptacionPrestamo.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LeyendaBajaCajaAhorro.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LeyendaIngresoCajadeAhorro.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LeyendaVentaAcciones.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MenuSocio.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ModificacionAhorro.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MovimientosPrestamos.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NotificacionesPendientesPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PrestamoNormal.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PrestamosEspeciales.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PromesasPago.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ResetNewPassword.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SeleccionaCaja.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SocioDefinirContraseña.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SocioRegistroBeneficiarios.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	    <CustomToolNamespace></CustomToolNamespace>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SocioRegistroDatosBancarios.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SocioRegistroDocumentos.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SocioRegistroLaborales.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SocioRegistroNombre.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TablaAmortizacionPrestamo.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TerminosCondiciones.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\VentaAcciones.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </MauiXaml>
+
+		<MauiXaml Update="Views\ReiniciarContraseña.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</MauiXaml>
+	</ItemGroup>
+
+</Project>
