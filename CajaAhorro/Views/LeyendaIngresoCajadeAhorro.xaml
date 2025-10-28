@@ -17,7 +17,7 @@
     </ContentPage.Resources>
 
     <NavigationPage.TitleView>
-            <Image Margin="10" HeightRequest="30" Source="LogoMoneybox" HorizontalOptions="Start"/>
+            <Image Margin="10" HeightRequest="30" Source="logo.png" HorizontalOptions="Start"/>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>

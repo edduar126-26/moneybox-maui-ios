@@ -19,7 +19,7 @@
 
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal">
-            <Image Margin="10" HeightRequest="30" Source="LogoMoneybox" HorizontalOptions="Start"/>
+            <Image Margin="10" HeightRequest="30" Source="logo.png" HorizontalOptions="Start"/>
         </StackLayout>
     </NavigationPage.TitleView>
 

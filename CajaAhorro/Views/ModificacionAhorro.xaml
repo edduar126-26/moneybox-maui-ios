@@ -41,7 +41,7 @@
                    HeightRequest="30"
                    
                    Aspect="AspectFit"
-                   Source="LogoMoneybox"
+                   Source="logo.png"
                    Margin="0,0,4,0"
                    VerticalOptions="Center" />
 

@@ -41,7 +41,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="LogoMoneybox" HeightRequest="30" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Image Source="logo.png" HeightRequest="30" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start"/>
 
                 <Label x:Name="NombreSociolbl" Grid.Column="1" VerticalOptions="Center"
        FontSize="16" FontAttributes="Bold" TextColor="White"

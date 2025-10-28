@@ -18,7 +18,7 @@
 
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal">
-            <Image Margin="10" HeightRequest="30" Source="LogoMoneybox" HorizontalOptions="Start"/>
+            <Image Margin="10" HeightRequest="30" Source="logo.png" HorizontalOptions="Start"/>
             <Label x:Name="NombreSociolbl" VerticalOptions="Center" Margin="10, 10" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
         </StackLayout>
     </NavigationPage.TitleView>

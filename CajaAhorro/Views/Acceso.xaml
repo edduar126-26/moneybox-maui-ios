@@ -6,7 +6,7 @@
         <ScrollView>
             <StackLayout x:Name="stckLogin">
                 
-                <Image Margin="30" WidthRequest="250" Source="LogoMoneybox" x:Name="Ingresarlogo"></Image>
+                <Image Margin="30" WidthRequest="250" Source="logo.png" x:Name="Ingresarlogo"></Image>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10" Margin="10">
                     <Label Text="Empleado" VerticalOptions="Center"/>
